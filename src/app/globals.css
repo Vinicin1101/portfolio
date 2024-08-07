@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -30,4 +33,191 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+* {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #000;
+}
+
+bio::after {
+  content: '"';
+}
+
+bio::before {
+  content: '"';
+}
+
+main > article {
+  min-height: 60vh;
+}
+
+/* Botões personalizados */
+
+.btn-link {
+  margin: 15px;
+  list-style: none;
+}
+
+.buttom-primary,
+.buttom-secondary {
+  --bg: #000;
+  --hover-bg: #fcccf2;
+  --hover-text: #000;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.5em 1.3em;
+  background: var(--bg);
+  transition: 0.2s !important;
+  border: 1px solid transparent;
+}
+
+.buttom-secondary {
+  --bg: #fff;
+  color: #000;
+  background: var(--bg);
+}
+
+.buttom-primary:hover, .buttom-primary.isHere,
+.buttom-secondary:hover, .buttom-secondary.isHere {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem) !important;
+  border: 1px solid var(--hover-text);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.navbar-toggler{
+  border: none !important;
+}
+
+
+/* Bootstrap adapt */
+.btn:focus,
+.btn:active {
+  color: #000 !important;
+  background-color: #fff !important;
+  border: 1px solid #fff(0, 0%, 0%) !important;
+  border-color: #fff !important;
+
+  transform: translate(0) !important;
+  box-shadow: none !important;
+}
+
+
+/* Scroll */
+::selection {
+  background-color: #ff90e9ec;
+  color: rgb(0, 0, 0);
+}
+
+::-moz-selection {
+  background-color: #ff90e9ec;
+  color: rgb(0, 0, 0);
+}
+
+::-webkit-scrollbar {
+  background: #fff;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff90e855;
+}
+
+moz-scrollbar {
+  filter: invert(1);
+  width: 5px;
+}
+
+moz-scrollbar-thumb {
+  background-color: #ff90e855;
+}
+
+/* tags semânticas */
+
+.badge {
+  display: inline-block;
+  padding: .3em .4em;
+  font-size: 80%;
+  font-weight: 200;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.badge-primary:active{
+  /* border: 1px solid #000 !important; */
+}
+
+ul li::before {
+  padding-right: .3em;
+}
+ul li[class^="skill"]::before {
+  content: "🎯";
+}
+
+ul li[class^="level"]::before {
+  content: "⏳";
+}
+
+ul li[class^="location"]::before {
+  content: "🌎";
+}
+
+ul li[class^="lan"]::before {
+  content: "🔧";
+}
+
+ul li[class^="lib"]::before {
+  content: "📖";
+}
+
+ul li[class^="fw"]::before {
+  content: "🧰";
+}
+
+ul li[class^="sec"]::before {
+  content: "🔐";
+}
+
+ul li[class^="db"]::before {
+  content: "🎲";
+}
+
+ul li[class^="hack"]::before {
+  content: "👨🏻‍💻";
+}
+
+ul li[class^="malware"]::before {
+  content: "👾";
+}
+
+/* Adequar a página para dispositivo com telas inferiores a 600px de largura */
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: auto;
+    width: 100%;
+  }
+
+  header,
+  footer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-link {
+    margin-right: .5rem !important;
+  }
+
 }
