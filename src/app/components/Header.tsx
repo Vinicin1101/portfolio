@@ -13,7 +13,6 @@ import {
   PopoverPanel,
 } from '@headlessui/react'
 import {
-  Home,
   Bars3Icon,
   XMarkIcon
 } from '@heroicons/react/24/outline'
