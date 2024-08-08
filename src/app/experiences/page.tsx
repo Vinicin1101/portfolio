@@ -1,6 +1,7 @@
 import ExperienceComponent from "../components/Experience";
 
 interface expObj {
+    id: number,
     enterprise: string,
     role: string,
     desc: string,
@@ -17,7 +18,7 @@ const Experiences = async () => {
                 <section className="col-md-8 offset-md-2 mt-3">
                     <h2 className="text-center text-3xl text-semibold my-8 mb-10">Experiências</h2>
                     {experiences.map((exp: expObj) =>
-                        <ExperienceComponent exp={exp} />
+                        <ExperienceComponent key={exp.id} exp={exp} />
                     )}
                 </section>
             </article>

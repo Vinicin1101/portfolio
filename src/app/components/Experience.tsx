@@ -1,9 +1,11 @@
 interface tag {
+    id: number,
     type: string,
     value: string
 }
 
 interface experience {
+    id: number,
     enterprise: string,
     role: string,
     tags: Array<tag>,
@@ -19,7 +21,7 @@ const ExperienceComponent = ({exp}: { exp: experience }) => {
             </p>
             <ul className="tags flex flex-wrap mb-2 mt-2 gap-3 p-0">
                 {exp.tags.map((tag: tag) => 
-                    <li key={tag.value} className={`${tag.type} badge badge-primary btn buttom-secondary font-light pl-2 pr-2 pt-1 pb-1`}>
+                    <li key={tag.id} className={`${tag.type} badge badge-primary btn buttom-secondary font-light pl-2 pr-2 pt-1 pb-1`}>
                         { tag.value }
                     </li>
                 )}
