@@ -34,6 +34,8 @@ const Footer = () => {
                     </a>
                 </section>
             </article>
+
+            {/* Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. */}
         </footer>
     )
 }
