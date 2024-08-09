@@ -205,6 +205,10 @@ ul li[class^="malware"]::before {
   content: "👾";
 }
 
+ul li[class^="method"]::before {
+  content: "📈";
+}
+
 div.experiences:nth-child(odd) {
   text-align: right;
 }
