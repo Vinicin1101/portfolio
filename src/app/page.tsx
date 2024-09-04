@@ -3,12 +3,32 @@ import { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 import { useGlitch } from 'react-powerglitch'
+import { TypeAnimation } from 'react-type-animation';
 
 import ReactMarkdown from 'react-markdown'
 
 export default function Home() {
 
   const [data, setProfile] = useState(null)
+  const bootServices = [
+    "Started Create Static Device Nodes in /dev.",
+    "Starting udev Kernel Device Manager...",
+    "Reached target Local Encrypted Volumes.",
+    "Reached target Paths.",
+    "Starting udev Coldplug all Devices...",
+    "Reached target Slices.",
+    "Reached target Swaps.",
+    "Mounted /boot.",
+    "Mounted /var.",
+    "Starting Flush Journal to Persistent Storage...",
+    "Started udev Kernel Device Manager.",
+    "Started udev Coldplug all Devices.",
+    "Reached target System Initialization.",
+    "Listening on udev Kernel Socket.",
+    "Listening on udev Control Socket.",
+    "Reached target Basic System.",
+    "Started Flush Journal to Persistent Storage."
+  ]
 
   useEffect(() => {
     fetch("https://fringe-obsidian-louse.glitch.me/my/info")
@@ -41,7 +61,23 @@ export default function Home() {
   );
   const hoverGlitch = useGlitch({"playMode": "hover"});
 
-  if(!data) return (<main className="min-h-screen">Loading...</main>)
+  if(!data) return (
+    <main className="min-h-screen">      
+      <section className="booting">
+        {bootServices.map((service, i) => <motion.p key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ bounce: 0, delay: i * 0.15, duration: 0.03 }}>[ <span className="text-green-400">OK</span> ] 
+          <TypeAnimation
+            sequence={[
+              service, 100
+            ]}
+            wrapper="span"
+            cursor={true}
+            speed={99}
+            style={{ display: 'inline-block' }}
+          />
+        </motion.p>)}
+      </section>
+    </main>
+  )
   
   interface profileInterface {
    picture: any,
