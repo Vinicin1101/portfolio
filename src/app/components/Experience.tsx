@@ -1,5 +1,4 @@
 'use client'
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useGlitch } from 'react-powerglitch'
 
@@ -37,7 +36,7 @@ const ExperienceComponent = ({exp}: { exp: experience }) => {
         <motion.div className="experiences flex flex-col p-2 my-4" 
             initial={{ opacity: 0, x: exp.id % 2 == 0 ? -100 : 100, filter: "blur(2px)" }}
             animate={{ opacity: 1, x: 0, filter: "none"}}
-            transition={{ bounce: 0, type: "spring", duration: 0.3 }}
+            transition={{ bounce: 0, type: "spring", duration: 0.3, delay: exp.id / 5}}
         >
             <h4 className="text-2xl">{ exp.enterprise }</h4>
             <p className="font-light text-slate-500 text-sm" ref={glitch.ref}>

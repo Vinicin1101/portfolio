@@ -223,6 +223,15 @@ div.experiences:nth-child(even) ul.tags {
   justify-content: left !important;
 }
 
+/* ul.grades li.grade-infos:nth-child(odd) div{
+  text-align: right;
+}
+
+ul.grades li.grade-infos:nth-child(even) div{
+  text-align: left;
+} */
+
+
 
 /* Adequar a página para dispositivo com telas inferiores a 600px de largura */
 

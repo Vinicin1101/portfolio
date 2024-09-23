@@ -11,23 +11,43 @@ export default function Home() {
 
   const [data, setProfile] = useState(null)
   const bootServices = [
-    "Started Create Static Device Nodes in /dev.",
-    "Starting udev Kernel Device Manager...",
-    "Reached target Local Encrypted Volumes.",
-    "Reached target Paths.",
-    "Starting udev Coldplug all Devices...",
-    "Reached target Slices.",
-    "Reached target Swaps.",
-    "Mounted /boot.",
-    "Mounted /var.",
-    "Starting Flush Journal to Persistent Storage...",
-    "Started udev Kernel Device Manager.",
-    "Started udev Coldplug all Devices.",
-    "Reached target System Initialization.",
-    "Listening on udev Kernel Socket.",
-    "Listening on udev Control Socket.",
-    "Reached target Basic System.",
-    "Started Flush Journal to Persistent Storage."
+    " Started Create Static Device Nodes in /dev.",
+    " Starting udev Kernel Device Manager...",
+    " Reached target Local Encrypted Volumes.",
+    " Reached target Paths.",
+    " Starting udev Coldplug all Devices...",
+    " Reached target Slices.",
+    " Reached target Swaps.",
+    " Mounted /boot.",
+    " Mounted /var.",
+    " Starting Flush Journal to Persistent Storage...",
+    " Started udev Kernel Device Manager.",
+    " Started udev Coldplug all Devices.",
+    " Reached target System Initialization.",
+    " Listening on udev Kernel Socket.",
+    " Listening on udev Control Socket.",
+    " Reached target Basic System.",
+    " Started Flush Journal to Persistent Storage.",
+    " Starting Network Service...",
+    " Reached target Network is Online.",
+    " Started LSB: AppArmor initialization.",
+    " Starting Load Kernel Modules...",
+    " Started Apply Kernel Variables.",
+    " Reached target Remote File Systems.",
+    " Starting Update UTMP about System Boot/Shutdown...",
+    " Started Update UTMP about System Boot/Shutdown.",
+    " Starting Permit User Sessions...",
+    " Started Permit User Sessions.",
+    " Starting GNOME Display Manager...",
+    " Started GNOME Display Manager.",
+    " Started D-Bus System Message Bus.",
+    " Reached target Graphical Interface.",
+    " Starting Virtualization daemon...",
+    " Started Virtualization daemon.",
+    " Starting Load/Save Random Seed...",
+    " Started Load/Save Random Seed.",
+    " Started Login Service.",
+    " Reached target Multi-User System."
   ]
 
   useEffect(() => {
@@ -64,16 +84,11 @@ export default function Home() {
   if(!data) return (
     <main className="min-h-screen">      
       <section className="booting">
-        {bootServices.map((service, i) => <motion.p key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ bounce: 0, delay: i * 0.15, duration: 0.03 }}>[ <span className="text-green-400">OK</span> ] 
-          <TypeAnimation
-            sequence={[
-              service, 100
-            ]}
-            wrapper="span"
-            cursor={true}
-            speed={99}
-            style={{ display: 'inline-block' }}
-          />
+        {bootServices.map((service, i) => <motion.p key={i} 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ bounce: 0, delay: i * 0.15, duration: 0.1 }}>
+          [ <span className="text-green-400" >OK</span> ] {service}
         </motion.p>)}
       </section>
     </main>
@@ -83,7 +98,6 @@ export default function Home() {
    picture: any,
    name: string,
    tagsTipadas: Array<any>
-   sobre: any,
    formacao: any
   }
   let profile: profileInterface = data;
@@ -133,17 +147,25 @@ export default function Home() {
             transition={{ bounce: 0, type: "spring", delay: .1, duration: 0.3 }}
           >
             <div>
-            <motion.h1 className="text-center text-3xl font-semibold"
+            <motion.h1 className="text-center text-3xl font-semibold12"
               initial={{ opacity: 0, x: 100, filter: "blur(2px)" }}
               animate={{ opacity: 1, x: 0, filter: "none"}}
               transition={{ bounce: 0, type: "spring", delay: .2, duration: 0.3 }}
               ref={hoverGlitch.ref}
               >
-                {profile.sobre.title}
+                Sobre mim
               </motion.h1>
               
-              <ReactMarkdown>{profile.sobre.resume}</ReactMarkdown>
-              <ReactMarkdown>{profile.sobre.experience}</ReactMarkdown>
+              <p>Eu sou um desenvolvedor iniciante com uma paixão por tecnologia e aprendizado constante. 
+                Apesar de ainda não ter experiência profissional, possuo uma formação sólida em programação e habilidades de resolução de problemas. 
+                Estou ansioso para aplicar o que aprendi em projetos futuros e continuar desenvolvendo minhas habilidades.
+              </p>
+
+              <p>Tenho experiência em trabalhar com linguagens de programação como <em>Java</em>, <em>Python</em> e <em>JS</em>, 
+                além de ter conhecimento básico de ferramentas de desenvolvimento de software, como <em>Git</em> e <em>Linux</em>. 
+                Além disso, sou capaz de trabalhar em equipe eficazmente para alcançar objetivos comuns. 
+                Estou sempre procurando por novos desafios e oportunidades para crescer como desenvolvedor e adquirir experiência profissional.
+              </p>
             </div>
           </motion.section>
           <motion.section className="container"
@@ -161,8 +183,20 @@ export default function Home() {
                 {profile.formacao.title}
               </motion.h1>
               
-              <ReactMarkdown>{profile.formacao.ifsp}</ReactMarkdown>
-              <ReactMarkdown>{profile.formacao.cursos}</ReactMarkdown>
+              <ul className="grades">
+                {profile.formacao.grades.map((grade: any, index: number) => { return (
+                  <li key={index} className="grade-infos my-4">
+                    <div>
+                        <p>
+                          <span className="text-lg font-bold">{grade.title} - {grade.institution}</span>
+                          <span> ({grade.date})</span>
+                        </p>
+                      <ReactMarkdown>{grade.description}</ReactMarkdown>
+                    </div>
+                  </li>
+
+                )})}
+              </ul>
             </div>
           </motion.section>
         </article>
